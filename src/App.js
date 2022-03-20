@@ -8,8 +8,12 @@ import { getPlacesData } from "./api";
 
 function App() {
     const [places, setPlaces] = useState([]);
-    const [coordinates, setCoordinates] = useState({})
-    const [bounds, setBounds] = useState({})
+    const [coordinates, setCoordinates] = useState({});
+
+    const [bounds, setBounds] = useState({});
+    const [childClicked, setChildClicked] = useState();
+
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
@@ -20,9 +24,12 @@ function App() {
     // console.log(places)
 
     useEffect(() => {
+        setIsLoading(true)
+
         getPlacesData(bounds.sw, bounds.ne)
             .then((data) => {
                 setPlaces(data)
+                setIsLoading(false)
             })
     }, [coordinates, bounds])
 
@@ -34,6 +41,8 @@ function App() {
                 <Grid item xs={12} md={4}>
                     <List
                         places={places}
+                        childClicked={childClicked}
+                        isLoading={isLoading}
                     />
                 </Grid>
                 <Grid item xs={12} md={8}>
@@ -42,6 +51,7 @@ function App() {
                         setBounds={setBounds}
                         coordinates={coordinates}
                         places={places}
+                        setChildClicked={setChildClicked}
                     />
                 </Grid>
             </Grid>
