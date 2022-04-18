@@ -24,7 +24,7 @@ const Header = ({ setCoordinates }) => {
                 <Typography variant="h5" classname={classes.title}>
                     Travel Advisor
                 </Typography>
-                <Box display={"flex"}>
+                <Box display={"flex"} alignItems="center">
                     <Typography variant="h6" classname={classes.title}>
                         Explorer new places
                     </Typography>

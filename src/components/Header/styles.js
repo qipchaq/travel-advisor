@@ -28,5 +28,10 @@ export default makeStyles((theme) => ({
     },
     toolbar: {
         display: 'flex', justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            padding: '16px',
+            gap: '8px'
+        },
     },
 }));
