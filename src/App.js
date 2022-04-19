@@ -52,7 +52,7 @@ function App() {
         <>
             <CssBaseline />
             <Header setCoordinates={setCoordinates} />
-            <Grid container spacing={3} style={{ width: '100%' }}>
+            <Grid container style={{ width: '100%' }} spacing={1}>
                 <Grid item xs={12} md={4}>
                     <List
                         places={filteredPlaces.length ? filteredPlaces : places}
